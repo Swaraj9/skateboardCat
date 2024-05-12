@@ -18,7 +18,7 @@ function App() {
       dinoRef.current.classList.add("jump");
       setTimeout(function () {
         dinoRef.current.classList.remove("jump");
-      }, 300);
+      }, 400);
     }
   };
 
@@ -37,7 +37,7 @@ function App() {
       );
 
       // detect collision
-      if (cactusLeft < 40 && cactusLeft > 0 && dinoTop >= 335) {
+      if (cactusLeft < 40 && cactusLeft > 0 && dinoTop >= (window.innerHeight * 0.85 - 50 - 25 - 40)) {
         // collision
         setFinalScore(score);
         setGameOver(true);
@@ -55,14 +55,29 @@ function App() {
     document.addEventListener("keydown", jump);
   }, []);
 
-  const handleCopy = async() => {
+  const handleCopy = async () => {
     await navigator.clipboard.writeText("1234567890");
     setCopied(true);
   };
 
   return (
     <div>
-      <div className="p-4 text-4xl">Skatboard Cat</div>
+      <div className="p-4 text-4xl max-md:text-lg items-center flex justify-between">
+        <div>Skatboard Cat</div>
+        <div
+          onClick={() => handleCopy()}
+          className="z-20 p-2 px-4 max-md:text-lg max-md:p-1 max-md:px-2 text-2xl cursor-pointer w-fit bg-neutral-900 rounded"
+        >
+          <div className="flex items-center gap-2">
+            CA: 1234567890{" "}
+            {copied ? (
+              <BiCheckCircle className=" text-green-500" />
+            ) : (
+              <BiCopy className=" text-sky-500" />
+            )}
+          </div>
+        </div>
+      </div>
       <div className="game" onTouchStart={() => jump()}>
         {gameOver ? (
           <div
@@ -82,9 +97,6 @@ function App() {
             <div id="cactus" ref={cactusRef}></div>
           </div>
         )}
-      </div>
-      <div onClick={() => handleCopy()} className="z-20 p-5 text-4xl cursor-pointer w-fit bg-neutral-900 rounded ml-auto mr-auto mt-5">
-        <div className="flex items-center gap-2">CA: 1234567890 {copied ? <BiCheckCircle className=" text-green-500"/> : <BiCopy className=" text-sky-500"/>}</div>
       </div>
     </div>
   );
