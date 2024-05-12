@@ -63,7 +63,7 @@ function App() {
   return (
     <div>
       <div className="p-4 text-4xl max-md:text-lg items-center flex justify-between">
-        <div>Skatboard Cat</div>
+        <div>Skateboard Cat</div>
         <div
           onClick={() => handleCopy()}
           className="z-20 p-2 px-4 max-md:text-lg max-md:p-1 max-md:px-2 text-2xl cursor-pointer w-fit bg-neutral-900 rounded"
