@@ -33,7 +33,7 @@ function App() {
 
       // detect collision
       if (
-        binLeft < 140 &&
+        binLeft < 160 &&
         binLeft > 0 &&
         catTop >= window.innerHeight * 0.85 - 150 - 25 - 80 - 20
       ) {
@@ -42,7 +42,7 @@ function App() {
         setGameOver(true);
         setScore(0);
       } else {
-        setScore(score + 1);
+        setScore(score + 0.2000);
       }
     }, 10);
 
@@ -85,7 +85,7 @@ function App() {
               className="bg-[rgba(10,10,10,0.8)] rounded p-5 gap-2 flex items-center flex-col cursor-pointer"
             >
               <div>Game Over</div>
-              <div>Score: {finalScore}</div>
+              <div>Score: {Math.round(finalScore)}</div>
               <div className="bg-white h-1 w-full rounded"/>
               <button className="flex items-center gap-2 mt-2">
                 Retry <MdRestartAlt />
@@ -94,7 +94,7 @@ function App() {
           </div>
         ) : (
           <div className="">
-            <p className="bg-[rgba(10,10,10,0.8)] w-fit">Score : {score}</p>
+            <p className="bg-[rgba(10,10,10,0.8)] w-fit">Score : {Math.round(score)}</p>
             <div id="cat" ref={catRef}></div>
             <div id="bin" ref={binRef}></div>
           </div>

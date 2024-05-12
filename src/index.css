@@ -59,6 +59,7 @@ font-family: "Poetsen One", sans-serif;
   background-size: 50px 50px;
   position: relative;
   top: calc(85vh - 150px - 25px - 20px);
+  left:20px;
   background-image: url("assets/cat.png");
   background-size: cover;
 }
@@ -74,26 +75,26 @@ font-family: "Poetsen One", sans-serif;
   }
 
   5%{
-    transform: rotateZ(-12deg);
+    transform: rotateZ(-20deg);
   }
 
   30% {
     top: calc(85vh - 150px - 25px - 100px - 20px);
-    transform: rotateZ(-12deg);
+    transform: rotateZ(-20deg);
   }
 
   50% {
     top: calc(85vh - 150px - 25px - 200px - 20px);
-    transform: rotateZ(-12deg);
+    transform: rotateZ(0deg);
   }
 
   80% {
     top: calc(85vh - 150px - 25px - 100px - 20px);
-    transform: rotateZ(-12deg);
+    transform: rotateZ(20deg);
   }
 
   95%{
-    transform: rotateZ(-12deg);
+    transform: rotateZ(20deg);
   }
 
   100% {
