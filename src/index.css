@@ -26,13 +26,19 @@ font-family: "Poetsen One", sans-serif;
 
 .game {
   width: 100vw;
-  height: 85vh;
+  height: 88.5vh;
   border: 1px solid black;
   margin: auto;
   background-image: url("assets/gameBg.png");
   background-repeat: repeat-x;
   background-size: cover;
   animation: bgMove 2.5s linear infinite;
+}
+
+@media screen and (max-width:700px){
+  .game{
+    height:90vh;
+  }
 }
 
 @keyframes bgMove{
@@ -58,7 +64,7 @@ font-family: "Poetsen One", sans-serif;
 }
 
 .jump {
-  animation: jump 0.4s linear;
+  animation: jump 0.6s linear;
 }
 
 @keyframes jump {
@@ -67,15 +73,15 @@ font-family: "Poetsen One", sans-serif;
   }
 
   30% {
-    top: calc(85vh - 50px - 25px - 50px - 20px);
-  }
-
-  50% {
     top: calc(85vh - 50px - 25px - 100px - 20px);
   }
 
+  50% {
+    top: calc(85vh - 50px - 25px - 200px - 20px);
+  }
+
   80% {
-    top: calc(85vh - 50px - 25px - 50px - 20px);
+    top: calc(85vh - 50px - 25px - 100px - 20px);
   }
 
   100% {
@@ -84,14 +90,14 @@ font-family: "Poetsen One", sans-serif;
 }
 
 #bin {
-  width: 20px;
-  height: 40px;
+  width: 40px;
+  height: 80px;
   position: relative;
-  top: calc(85vh - 40px - 25px - 50px - 20px);
+  top: calc(85vh - 80px - 25px - 50px - 20px);
   left: max(100vw, 1000px);
   background-image: url("assets/bin.png");
   background-size: 20px 40px;
-  animation: block 2.5s infinite linear;
+  animation: block 2.1s infinite linear;
   background-size: cover;
 }
 

@@ -17,7 +17,7 @@ function App() {
       catRef.current.classList.add("jump");
       setTimeout(function () {
         catRef.current.classList.remove("jump");
-      }, 400);
+      }, 600);
     }
   };
 
@@ -35,7 +35,7 @@ function App() {
       if (
         binLeft < 40 &&
         binLeft > 0 &&
-        catTop >= window.innerHeight * 0.85 - 50 - 25 - 40 - 20
+        catTop >= window.innerHeight * 0.85 - 50 - 25 - 80 - 20
       ) {
         // collision
         setFinalScore(score);
