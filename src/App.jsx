@@ -33,16 +33,16 @@ function App() {
 
       // detect collision
       if (
-        binLeft < 160 &&
+        binLeft < 185 &&
         binLeft > 0 &&
-        catTop >= window.innerHeight * 0.85 - 150 - 25 - 80 - 20
+        catTop >= window.innerHeight * 0.85 - 175 /* Cat Height */ - 25 - 90 /* Bin Height - 10 */ - 20
       ) {
         // collision
         setFinalScore(score);
         setGameOver(true);
         setScore(0);
       } else {
-        setScore(score + 0.2000);
+        setScore(score + 0.1000);
       }
     }, 10);
 
