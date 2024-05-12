@@ -33,9 +33,9 @@ function App() {
 
       // detect collision
       if (
-        binLeft < 40 &&
+        binLeft < 140 &&
         binLeft > 0 &&
-        catTop >= window.innerHeight * 0.85 - 50 - 25 - 80 - 20
+        catTop >= window.innerHeight * 0.85 - 150 - 25 - 80 - 20
       ) {
         // collision
         setFinalScore(score);
