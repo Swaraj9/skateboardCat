@@ -1,11 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import { BiCheckCircle, BiCopy } from "react-icons/bi";
+import { BiCheckCircle, BiCopy, BiReply } from "react-icons/bi";
+import { MdRestartAlt } from "react-icons/md";
 
 function App() {
-  //ref to get 'dino' html element in js
-  const dinoRef = useRef();
-  //ref to get 'cactus' html element in js
-  const cactusRef = useRef();
+  const catRef = useRef();
+  const binRef = useRef();
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [finalScore, setFinalScore] = useState(0);
@@ -14,30 +13,30 @@ function App() {
   //method to add 'jump' class every '300ms' as the class jump css has jumping animation of 0.3s(300ms).
   //so on each key press we need to add animation and remove animation
   const jump = () => {
-    if (!!dinoRef.current && dinoRef.current.classList != "jump") {
-      dinoRef.current.classList.add("jump");
+    if (!!catRef.current && catRef.current.classList != "jump") {
+      catRef.current.classList.add("jump");
       setTimeout(function () {
-        dinoRef.current.classList.remove("jump");
+        catRef.current.classList.remove("jump");
       }, 400);
     }
   };
 
-  //useEffect to track whether dino position and cactus position is intersecting
-  //if yes, then game over.
   useEffect(() => {
     const isAlive = setInterval(function () {
-      // get current dino Y position
-      const dinoTop = parseInt(
-        getComputedStyle(dinoRef.current).getPropertyValue("top")
+      const catTop = parseInt(
+        getComputedStyle(catRef.current).getPropertyValue("top")
       );
 
-      // get current cactus X position
-      let cactusLeft = parseInt(
-        getComputedStyle(cactusRef.current).getPropertyValue("left")
+      let binLeft = parseInt(
+        getComputedStyle(binRef.current).getPropertyValue("left")
       );
 
       // detect collision
-      if (cactusLeft < 40 && cactusLeft > 0 && dinoTop >= (window.innerHeight * 0.85 - 50 - 25 - 40)) {
+      if (
+        binLeft < 40 &&
+        binLeft > 0 &&
+        catTop >= window.innerHeight * 0.85 - 50 - 25 - 40 - 20
+      ) {
         // collision
         setFinalScore(score);
         setGameOver(true);
@@ -80,21 +79,24 @@ function App() {
       </div>
       <div className="game" onTouchStart={() => jump()}>
         {gameOver ? (
-          <div
-            className="flex text-3xl flex-col justify-center items-center h-full cursor-pointer"
-            onClick={() => setGameOver(false)}
-          >
-            <div className="bg-[rgba(10,10,10,0.8)] rounded p-5 gap-2 flex items-center flex-col">
+          <div className="flex text-3xl flex-col justify-center items-center h-full">
+            <div
+              onClick={() => setGameOver(false)}
+              className="bg-[rgba(10,10,10,0.8)] rounded p-5 gap-2 flex items-center flex-col cursor-pointer"
+            >
               <div>Game Over</div>
               <div>Score: {finalScore}</div>
-              <button>Retry</button>
+              <div className="bg-white h-1 w-full rounded"/>
+              <button className="flex items-center gap-2 mt-2">
+                Retry <MdRestartAlt />
+              </button>
             </div>
           </div>
         ) : (
           <div className="">
             <p className="bg-[rgba(10,10,10,0.8)] w-fit">Score : {score}</p>
-            <div id="dino" ref={dinoRef}></div>
-            <div id="cactus" ref={cactusRef}></div>
+            <div id="cat" ref={catRef}></div>
+            <div id="bin" ref={binRef}></div>
           </div>
         )}
       </div>
