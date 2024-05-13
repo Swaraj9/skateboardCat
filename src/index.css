@@ -1,12 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
-font-family: "Poetsen One", sans-serif;
+  font-family: "Poetsen One", sans-serif;
   font-weight: 400;
   font-style: normal;
   line-height: 1.5;
@@ -36,20 +35,14 @@ font-family: "Poetsen One", sans-serif;
   animation: bgMove 2.5s linear infinite;
 }
 
-@media screen and (max-width:700px){
-  .game{
-    height:90vh;
-  }
-}
-
-@keyframes bgMove{
-  0%{
+@keyframes bgMove {
+  0% {
     background-position: 0;
   }
-  50%{
+  50% {
     background-position: calc(-0.5 * (100vw - 100%));
   }
-  100%{
+  100% {
     background-position: calc(-1 * (100vw - 100%));
   }
 }
@@ -60,7 +53,7 @@ font-family: "Poetsen One", sans-serif;
   background-size: 50px 50px;
   position: relative;
   top: calc(85vh - var(--catHeight) - 25px - 20px);
-  left:20px;
+  left: 20px;
   background-image: url("assets/cat.png");
   background-size: cover;
 }
@@ -75,7 +68,7 @@ font-family: "Poetsen One", sans-serif;
     transform: rotateZ(0deg);
   }
 
-  5%{
+  5% {
     transform: rotateZ(-20deg);
   }
 
@@ -94,7 +87,7 @@ font-family: "Poetsen One", sans-serif;
     transform: rotateZ(20deg);
   }
 
-  95%{
+  95% {
     transform: rotateZ(20deg);
   }
 
@@ -123,5 +116,58 @@ font-family: "Poetsen One", sans-serif;
 
   100% {
     left: -5px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .game {
+    height: 93vh;
+  }
+
+  #cat {
+    width: 100px;
+    height: 100px;
+    top: calc(93vh - 100px - 25px - 20px);
+  }
+
+  #bin{
+    width: 30px;
+    height: 60px;
+    top: calc(93vh - 100px - 25px - 60px - 20px);
+  }
+
+  @keyframes jump {
+    0% {
+      top: calc(93vh - 100px - 25px - 20px);
+      transform: rotateZ(0deg);
+    }
+  
+    5% {
+      transform: rotateZ(-20deg);
+    }
+  
+    30% {
+      top: calc(93vh - 100px - 25px - 75px - 20px);
+      transform: rotateZ(-20deg);
+    }
+  
+    50% {
+      top: calc(93vh - 100px - 25px - 150px - 20px);
+      transform: rotateZ(0deg);
+    }
+  
+    80% {
+      top: calc(93vh - 100px - 25px - 75px - 20px);
+      transform: rotateZ(20deg);
+    }
+  
+    95% {
+      transform: rotateZ(20deg);
+    }
+  
+    100% {
+      top: calc(93vh - 100px - 25px - 20px);
+      transform: rotateZ(0deg);
+    }
   }
 }

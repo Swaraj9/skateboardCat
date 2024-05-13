@@ -30,12 +30,17 @@ function App() {
       let binLeft = parseInt(
         getComputedStyle(binRef.current).getPropertyValue("left")
       );
+      
+      let collisionCondition = window.innerHeight * 0.85 - 175 /* Cat Height */ - 25 - 90 /* Bin Height - 10 */ - 20;
+      if(window.innerWidth < 700){
+        collisionCondition = window.innerHeight * 0.93 - 100 - 25 - 50 - 20;
+      }
 
       // detect collision
       if (
-        binLeft < 185 &&
+        binLeft < (window.innerWidth < 700 ? 110 : 185) &&
         binLeft > 0 &&
-        catTop >= window.innerHeight * 0.85 - 175 /* Cat Height */ - 25 - 90 /* Bin Height - 10 */ - 20
+        catTop >= collisionCondition
       ) {
         // collision
         setFinalScore(score);
@@ -61,7 +66,7 @@ function App() {
 
   return (
     <div>
-      <div className="p-4 text-4xl max-md:text-lg items-center flex justify-between">
+      <div className="p-4 text-4xl max-md:text-xl max-md:p-2 items-center flex justify-between">
         <div>Skateboard Cat</div>
         <div
           onClick={() => handleCopy()}
